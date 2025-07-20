@@ -13,7 +13,12 @@ int main() {
     }
     addr.sin_family = AF_INET;
     addr.sin_port = htons(8000);
-    result = bind(fd, ..., ...);
-    printf("hello world");
+    inet_pton(AF_INET, "0.0.0.0", &addr.sin_addr);
+    result = bind(fd, (struct sockaddr *) &addr, sizeof(addr));  
+    if (result == -1) {
+        perror("bind");
+        return -1;
+    }
+    printf("\nhello world");
     return 0;
 }
