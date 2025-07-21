@@ -37,16 +37,18 @@ int main() {
     printf("Waiting for client connection...\n");
 
     // Accept
-    client_addr_size = sizeof(client_addr);
-    cfd = accept(sfd, (struct sockaddr *)&client_addr, &client_addr_size);
-    if (cfd == -1)
-        handle_error("accept");
+    while(1) {
+        client_addr_size = sizeof(client_addr);
+        cfd = accept(sfd, (struct sockaddr *)&client_addr, &client_addr_size);
+        if (cfd == -1)
+            handle_error("accept");
 
-    printf("Client connected. Sending message...\n");
-
-    // Send message to client
-    const char *msg = "Hello Client\n";
-    write(cfd, msg, strlen(msg));
+        //send 
+        write(cfd, "Hello\n", 6);
+        char buffer[1024] = {0};
+        read(cfd, buffer, 1024);
+        printf("client: "%s\n", buffer);
+    }
 
     // Close sockets
     close(cfd);
