@@ -11,6 +11,7 @@ int linked_list_append(struct node *list, void *data);
 int linked_list_insert(struct node *list, void *data, int index);
 int linked_list_remove(struct node *list, int index);
 
+//function it creates dummy head node   
 struct node *linked_list_new() {
     struct node *list = malloc(sizeof(struct node));
     if (list == NULL) {
