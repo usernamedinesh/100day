@@ -1,4 +1,4 @@
-// another hash map implementation
+//binary implementaion 
 #include <stdio.h>
 #include <string.h>
 
