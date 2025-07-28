@@ -72,7 +72,7 @@ person *hash_table_lookup (char *name) {
     }
 }
 
-person *delete_hash_table(char *name){
+person *hash_table_delete(char *name){
     int index = hash(name);
     if (hash_table[index] != NULL && 
         strncmp(hash_table[index]->name, name, TABLE_SIZE) == 0) {
@@ -115,7 +115,7 @@ int main() {
         printf("found %s\n", tmp->name);
     }
 
-
+    hash_table_delete("Jcob");  
     printf("\n");
     printTable(); // Show table after insertions
 
