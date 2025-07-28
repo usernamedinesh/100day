@@ -62,6 +62,29 @@ void printTable() {
     printf("--------------------------\n");
 }
 
+// find person by name
+person *hash_table_lookup (char *name) {
+    int index = hash(name);
+    if (hash_table[index] != NULL && strncmp(hash_table[index]->name,name, TABLE_SIZE) == 0) {
+        return hash_table[index];
+    } else {
+        return NULL;
+    }
+}
+
+person *delete_hash_table(char *name){
+    int index = hash(name);
+    if (hash_table[index] != NULL && 
+        strncmp(hash_table[index]->name, name, TABLE_SIZE) == 0) {
+            person *tmp = hash_table[index];
+            hash_table[index] = NULL;
+            return tmp;
+        }
+    else {
+        return NULL;
+    }
+}
+
 int main() {
     init_hash_table();
     printTable(); // Show empty table
@@ -77,6 +100,21 @@ int main() {
     hash_table_insert(&startx);
     hash_table_insert(&yess);
     hash_table_insert(&another_jcob); // This will fail if Jcob hashes to the same spot
+    
+    person *tmp = hash_table_lookup("sahil");
+    if (tmp == NULL){
+        printf("not found \n");
+    } else{
+        printf("found %s\n", tmp->name);
+    }
+
+    tmp = hash_table_lookup("George");
+    if (tmp == NULL){
+        printf("not found \n");
+    } else{
+        printf("found %s\n", tmp->name);
+    }
+
 
     printf("\n");
     printTable(); // Show table after insertions
