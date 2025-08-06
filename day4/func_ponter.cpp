@@ -22,11 +22,11 @@ int main() {
     printf("20+10 = %d\n", sum);
     printf("50-25 = %d\n", diff);
 
+    //exueute at the end if don't call
 funGoto:
     printf("from goto statement\n");
     return 0;
 }
-
 
 void Dispaly(int age ) {
     printf("may age is : %d \n", age);
